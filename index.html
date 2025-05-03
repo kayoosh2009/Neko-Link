@@ -37,8 +37,11 @@
       box-shadow: 0 0 10px #d35400;
     }
 
-    .banner {
+    .banner-row {
       margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
     }
   </style>
 </head>
@@ -52,16 +55,21 @@
 
   <p>Вы будете перенаправлены через <span id="text-timer">20</span> секунд...</p>
 
-  <div class="banner">
+  <div class="banner-row">
     <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-            style='width:120px; height:60px; border:0px; padding:0; overflow:hidden; background-color: transparent;'>
-    </iframe>
+            style='width:120px; height:60px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+    <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+            style='width:120px; height:60px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+    <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+            style='width:120px; height:60px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
   </div>
 
   <script>
-    // Здесь можно добавлять сколько угодно ссылок
     const links = [
-      "https://youtu.be/Qy-0Ijlu_zo?si=3VX5haTdQlIaKJrJ"
+      "https://youtu.be/Qy-0Ijlu_zo?si=3VX5haTdQlIaKJrJ",
+      "https://example.com",
+      "https://openai.com",
+      "https://necoarc.world"
     ];
 
     let timeLeft = 20;
