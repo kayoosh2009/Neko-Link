@@ -10,6 +10,7 @@
       padding: 50px;
       background-color: #fff8f0;
       color: #333;
+      position: relative;
     }
 
     h1 {
@@ -37,23 +38,34 @@
       box-shadow: 0 0 10px #d35400;
     }
 
-    /* Стили боковых баннеров */
+    .bottom-banners {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
     .side-banner {
       position: fixed;
-      width: 120px;
-      height: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+      height: 600px;
       border: none;
       z-index: 10;
     }
 
-    .left-top { left: 10px; top: 20%; }
-    .left-bottom { left: 10px; top: 35%; }
-    .right-top { right: 10px; top: 20%; }
-    .right-bottom { right: 10px; top: 35%; }
+    .side-left {
+      left: 0;
+    }
 
-    @media (max-width: 768px) {
+    .side-right {
+      right: 0;
+    }
+
+    @media (max-width: 1200px) {
       .side-banner {
-        display: none; /* скрыть баннеры на мобильных */
+        display: none;
       }
     }
   </style>
@@ -68,11 +80,21 @@
 
   <p>Вы будете перенаправлены через <span id="text-timer">20</span> секунд...</p>
 
-  <!-- Баннеры по бокам -->
-  <iframe class="side-banner left-top" data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'></iframe>
-  <iframe class="side-banner left-bottom" data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'></iframe>
-  <iframe class="side-banner right-top" data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'></iframe>
-  <iframe class="side-banner right-bottom" data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'></iframe>
+  <!-- Боковые большие баннеры -->
+  <iframe class="side-banner side-left" data-aa='2392839'
+          src='//ad.a-ads.com/2392839?size=300x600'></iframe>
+  <iframe class="side-banner side-right" data-aa='2392839'
+          src='//ad.a-ads.com/2392839?size=300x600'></iframe>
+
+  <!-- Нижние маленькие баннеры -->
+  <div class="bottom-banners">
+    <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+            style='width:120px; height:60px; border:0px;'></iframe>
+    <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+            style='width:120px; height:60px; border:0px;'></iframe>
+    <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+            style='width:120px; height:60px; border:0px;'></iframe>
+  </div>
 
   <script>
     const links = [
