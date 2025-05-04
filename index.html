@@ -44,8 +44,8 @@
       box-shadow: 0 0 10px #d35400;
     }
 
-    .bottom-banners {
-      margin-top: 60px;
+    .top-banners, .bottom-banners {
+      margin: 30px auto;
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -62,12 +62,20 @@
       z-index: 0;
     }
 
-    .side-left {
+    .side-left-1 {
       left: 0;
     }
 
-    .side-right {
+    .side-left-2 {
+      left: 310px;
+    }
+
+    .side-right-1 {
       right: 0;
+    }
+
+    .side-right-2 {
+      right: 310px;
     }
 
     @media (max-width: 1200px) {
@@ -78,14 +86,28 @@
   </style>
 </head>
 <body>
-  <!-- Левый баннер -->
-  <iframe class="side-banner side-left" data-aa='2392839'
+  <!-- Левые баннеры -->
+  <iframe class="side-banner side-left-1" data-aa='2392839'
+          src='//ad.a-ads.com/2392839?size=300x600'></iframe>
+  <iframe class="side-banner side-left-2" data-aa='2392839'
           src='//ad.a-ads.com/2392839?size=300x600'></iframe>
 
   <!-- Контент -->
   <div class="container">
     <h1>Спасибо за переход!</h1>
     <p>Все деньги, заработанные на рекламе, пойдут на благотворительность кошачьим приютам в Японии.</p>
+
+    <!-- Верхние баннеры -->
+    <div class="top-banners">
+      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+              style='width:120px; height:60px; border:0px;'></iframe>
+      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+              style='width:120px; height:60px; border:0px;'></iframe>
+      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+              style='width:120px; height:60px; border:0px;'></iframe>
+      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+              style='width:120px; height:60px; border:0px;'></iframe>
+    </div>
 
     <div class="timer-container">
       <div id="circle" class="circle">20</div>
@@ -101,11 +123,19 @@
               style='width:120px; height:60px; border:0px;'></iframe>
       <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
               style='width:120px; height:60px; border:0px;'></iframe>
+      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+              style='width:120px; height:60px; border:0px;'></iframe>
+      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+              style='width:120px; height:60px; border:0px;'></iframe>
+      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
+              style='width:120px; height:60px; border:0px;'></iframe>
     </div>
   </div>
 
-  <!-- Правый баннер -->
-  <iframe class="side-banner side-right" data-aa='2392839'
+  <!-- Правые баннеры -->
+  <iframe class="side-banner side-right-1" data-aa='2392839'
+          src='//ad.a-ads.com/2392839?size=300x600'></iframe>
+  <iframe class="side-banner side-right-2" data-aa='2392839'
           src='//ad.a-ads.com/2392839?size=300x600'></iframe>
 
   <script>
