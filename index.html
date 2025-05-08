@@ -1,232 +1,100 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Спасибо за переход!</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #fff8f0;
-      font-family: sans-serif;
-      color: #333;
-      display: flex;
-      justify-content: center;
-    }
-
-    .container {
-      max-width: 700px;
-      padding: 50px 20px;
-      text-align: center;
-      z-index: 1;
-    }
-
-    h1 {
-      color: #d35400;
-    }
-
-    .timer-container {
-      margin: 30px auto;
-      width: 150px;
-      height: 150px;
-    }
-
-    .circle {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      border: 10px solid #d35400;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2em;
-      font-weight: bold;
-      color: #d35400;
-      box-shadow: 0 0 10px #d35400;
-    }
-
-    .bottom-banners {
-      margin-top: 60px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .side-banner {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 300px;
-      height: 600px;
-      border: none;
-      z-index: 0;
-    }
-
-    .side-left {
-      left: 0;
-    }
-
-    .side-right {
-      right: 0;
-    }
-
-    @media (max-width: 1200px) {
-      .side-banner {
-        display: none;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neko Link</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1c0b2b;
+            color: #e0ccff;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #bb86fc;
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
+        }
+        #linkWindow {
+            width: 80%;
+            height: 60%;
+            border: 2px solid #6200ea;
+            background-color: #2a1b3d;
+            overflow: auto;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(98, 0, 234, 0.4);
+            margin-bottom: 20px;
+        }
+        #countdown {
+            font-size: 1.2em;
+            color: #b388ff;
+            text-shadow: 0 0 5px rgba(179, 136, 255, 0.3);
+        }
+    </style>
 </head>
 <body>
-  <!-- Левый баннер -->
-  <iframe class="side-banner side-left" data-aa='2392839'
-          src='//ad.a-ads.com/2392839?size=300x600'></iframe>
+    <h1>Neko Link</h1>
+    <div id="linkWindow"></div>
+    <div id="countdown">Next link in: 20s</div>
 
-  <!-- Контент -->
-  <div class="container">
-    <h1>Спасибо за переход!</h1>
-    <p>Все деньги, заработанные на рекламе, пойдут на благотворительность кошачьим приютам в Японии.</p>
+    <script>
+        const links = [
+            "https://youtu.be/Qy-0Ijlu_zo?si=3VX5haTdQlIaKJrJ",
+            "https://www.youtube.com/live/khdKotXN1XU?si=TCFeq666G78da9_l",
+            "https://kayoosh2009.github.io/Miyamoto-Project/",
+            "https://kayoosh2009.github.io/Neko-Link/",
+            "https://vktarget.ru/?ref=11093672",
+            "https://firefaucet.win/ref/Kayoosh"
+        ];
+        let currentIframe = null;
+        let countdown = 20;
+        let intervalId = null;
 
-    <div class="timer-container">
-      <div id="circle" class="circle">20</div>
-    </div>
+        function displayRandomLink() {
+            if (links.length === 0) return;
 
-    <p>Вы будете перенаправлены через <span id="text-timer">20</span> секунд...</p>
+            const linkWindow = document.getElementById('linkWindow');
+            const randomLink = links[Math.floor(Math.random() * links.length)];
 
-    <!-- Нижние баннеры -->
-    <div class="bottom-banners">
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe dataleref='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-      <iframe data-aa='2392838' src='//ad.a-ads.com/2392838?size=120x60'
-              style='width:120px; height:60px; border:0px;'></iframe>
-    </div>
-  </div>
+            if (currentIframe) {
+                linkWindow.removeChild(currentIframe);
+            }
 
-  <!-- Правый баннер -->
-  <iframe class="side-banner side-right" data-aa='2392839'
-          src='//ad.a-ads.com/2392839?size=300x600'></iframe>
+            currentIframe = document.createElement('iframe');
+            currentIframe.src = randomLink;
+            currentIframe.style.width = '100%';
+            currentIframe.style.height = '100%';
+            currentIframe.style.border = 'none';
+            linkWindow.appendChild(currentIframe);
 
-  <script>
-    const links = [
-      "https://youtu.be/Qy-0Ijlu_zo?si=3VX5haTdQlIaKJrJ",
-      "https://www.youtube.com/live/khdKotXN1XU?si=TCFeq666G78da9_l ",
-      "https://kayoosh2009.github.io/Miyamoto-Project/",
-      "https://kayoosh2009.github.io/Neko-Link/",
-      "https://vktarget.ru/?ref=11093672",
-      "https://firefaucet.win/ref/Kayoosh"
-    ];
+            // Reset countdown
+            countdown = 20;
+            updateCountdown();
+        }
 
-    let timeLeft = 20;
-    const circle = document.getElementById("circle");
-    const textTimer = document.getElementById("text-timer");
+        function updateCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.textContent = `Next link in: ${countdown}s`;
+            countdown--;
 
-    const countdown = setInterval(() => {
-      timeLeft--;
-      circle.textContent = timeLeft;
-      textTimer.textContent = timeLeft;
+            if (countdown < 0) {
+                countdown = 20;
+                displayRandomLink();
+            }
+        }
 
-      if (timeLeft <= 0) {
-        clearInterval(countdown);
-        const randomLink = links[Math.floor(Math.random() * links.length)];
-        window.location.href = randomLink;
-      }
-    }, 1000);
-  </script>
+        // Display a random link immediately
+        displayRandomLink();
+
+        // Update countdown every second
+        intervalId = setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
