@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Случайная ссылка</title>
+  <title>Автооткрытие ссылок</title>
   <style>
     body {
       font-family: sans-serif;
@@ -12,22 +12,39 @@
       height: 100vh;
       font-size: 24px;
     }
+    #timer {
+      font-size: 48px;
+      margin-top: 20px;
+    }
   </style>
 </head>
-<body><h1>Переход на случайную ссылку...</h1><script>
+<body><h1>Следующая ссылка откроется через:</h1>
+<div id="timer">5</div><script>
   const links = [
     "https://youtu.be/Qy-0Ijlu_zo?si=Aw8RS1wFPf22FPC-",
     "https://www.youtube.com/live/khdKotXN1XU?si=esJfvswLpH3e4B5o"
     // Добавь сюда любые другие ссылки
   ];
 
-  function redirectToRandomLink() {
-    const randomIndex = Math.floor(Math.random() * links.length);
-    const url = links[randomIndex];
-    window.location.href = url;
+  let countdown = 5;
+  const timerElement = document.getElementById("timer");
+
+  function updateTimer() {
+    countdown--;
+    if (countdown === 0) {
+      openRandomLink();
+      countdown = 5;
+    }
+    timerElement.textContent = countdown;
   }
 
-  setInterval(redirectToRandomLink, 20000); // каждые 20 секунд
-  redirectToRandomLink(); // первый переход сразу
+  function openRandomLink() {
+    const randomIndex = Math.floor(Math.random() * links.length);
+    const url = links[randomIndex];
+    window.open(url, '_blank');
+  }
+
+  // Показывать таймер каждую секунду
+  setInterval(updateTimer, 1000);
 </script></body>
 </html>
