@@ -1,100 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neko Link</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #1c0b2b;
-            color: #e0ccff;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #bb86fc;
-            text-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
-        }
-        #linkWindow {
-            width: 80%;
-            height: 60%;
-            border: 2px solid #6200ea;
-            background-color: #2a1b3d;
-            overflow: auto;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(98, 0, 234, 0.4);
-            margin-bottom: 20px;
-        }
-        #countdown {
-            font-size: 1.2em;
-            color: #b388ff;
-            text-shadow: 0 0 5px rgba(179, 136, 255, 0.3);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Случайная ссылка</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-size: 24px;
+    }
+  </style>
 </head>
-<body>
-    <h1>Neko Link</h1>
-    <div id="linkWindow"></div>
-    <div id="countdown">Next link in: 20s</div>
+<body><h1>Переход на случайную ссылку...</h1><script>
+  const links = [
+    "https://youtu.be/Qy-0Ijlu_zo?si=Aw8RS1wFPf22FPC-",
+    "https://www.youtube.com/live/khdKotXN1XU?si=esJfvswLpH3e4B5o"
+    // Добавь сюда любые другие ссылки
+  ];
 
-    <script>
-        const links = [
-            "https://youtu.be/Qy-0Ijlu_zo?si=3VX5haTdQlIaKJrJ",
-            "https://www.youtube.com/live/khdKotXN1XU?si=TCFeq666G78da9_l",
-            "https://kayoosh2009.github.io/Miyamoto-Project/",
-            "https://kayoosh2009.github.io/Neko-Link/",
-            "https://vktarget.ru/?ref=11093672",
-            "https://firefaucet.win/ref/Kayoosh"
-        ];
-        let currentIframe = null;
-        let countdown = 20;
-        let intervalId = null;
+  function redirectToRandomLink() {
+    const randomIndex = Math.floor(Math.random() * links.length);
+    const url = links[randomIndex];
+    window.location.href = url;
+  }
 
-        function displayRandomLink() {
-            if (links.length === 0) return;
-
-            const linkWindow = document.getElementById('linkWindow');
-            const randomLink = links[Math.floor(Math.random() * links.length)];
-
-            if (currentIframe) {
-                linkWindow.removeChild(currentIframe);
-            }
-
-            currentIframe = document.createElement('iframe');
-            currentIframe.src = randomLink;
-            currentIframe.style.width = '100%';
-            currentIframe.style.height = '100%';
-            currentIframe.style.border = 'none';
-            linkWindow.appendChild(currentIframe);
-
-            // Reset countdown
-            countdown = 20;
-            updateCountdown();
-        }
-
-        function updateCountdown() {
-            const countdownElement = document.getElementById('countdown');
-            countdownElement.textContent = `Next link in: ${countdown}s`;
-            countdown--;
-
-            if (countdown < 0) {
-                countdown = 20;
-                displayRandomLink();
-            }
-        }
-
-        // Display a random link immediately
-        displayRandomLink();
-
-        // Update countdown every second
-        intervalId = setInterval(updateCountdown, 1000);
-    </script>
-</body>
+  setInterval(redirectToRandomLink, 20000); // каждые 20 секунд
+  redirectToRandomLink(); // первый переход сразу
+</script></body>
 </html>
